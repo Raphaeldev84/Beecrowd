@@ -1,26 +1,34 @@
-//importo o modulo fs (filesystem) para trabalhar com arquivos e diretorios
-const fileSystem = require('fs')
+const path = require('path');
+const currentFile = path.dirname(process.argv[1]);
 
-//importo o modulo path para trabalhar com o endereço de arquivos e diretorios
-const endereco = require('path');
+//realiza a leitura das linhas no arquivo dev\stdin
+var input = require('fs').readFileSync(currentFile + '\\dev\\stdin', 'utf8');
+var lines = input.split('\r\n');
 
-//descubro o endereço de onde meu script js esta salvo
-//ex: c:\documentos\javascript
-const enderecoDesteScriptJS = endereco.dirname(process.argv[1]);
+/////////////////////// COLAR NO BEECROWD O CODIGO DESTE PONTO EM DIANTE ///////////////////
 
-//realiza a leitura das linhas no arquivo dev\stdin que foi criado
-const conteudoArquivo = fileSystem.readFileSync(enderecoDesteScriptJS + '\\dev\\stdin', 'utf8');
+//quebrando a entrada de dados de uma linha em variaveis separadas
+//quando os valores estiverem na mesma linha
+//lines = lines[0].split(" ");
 
-//define qual é a quebra de linha utilizada no seu sistema operacional
-//se você estiver utilizando linux coloque \n se for windows coloque \r\n
-const quebraLinhaWindows = '\r\n'
+//obtem o primeiro valor do arquivo stdin
 
-let lines = conteudoArquivo.split(quebraLinhaWindows);
-
-
-for(let i = 0; i < 10; i++){
-    if (lines[i] <= 0) {
-        lines[i] = 1
-    }
-    console.log(`x[${i}] = ${Number(lines[i])}`)
+let n = parseInt(lines[0]);
+let numeros = [];
+let contIn = 0;
+let contOut = 0;
+for (let index = 1; index <= n; index++) {
+    numeros.push(parseInt(lines[index]));    
 }
+
+for (let index = 0; index < n; index++) {
+    if (numeros[index] >= 10 && numeros[index]<= 20) {
+        contIn++
+    }else{
+        contOut++
+    }
+    
+}
+
+console.log(contIn+" in");
+console.log(contOut+" out");
