@@ -1,3 +1,4 @@
+
 //importo o modulo fs (filesystem) para trabalhar com arquivos e diretorios
 const fileSystem = require('fs')
 
@@ -19,15 +20,20 @@ let lines = conteudoArquivo.split(quebraLinhaWindows);
 
 ///////////////////////COLAR NO BEECROWD O CODIGO DESTE PONTO EM DIANTE///////////////////
 //para ler linhas com mais de um valor na mesma linha use o comando a seguir
-//let [var1, var2, var3, var4] = lines.shift().split(" "); 
 
-//para ler linhas com um unico valor na mesma linha use o comando a seguir
-//let notaExame = lines.shift();
+const ddd = parseInt(lines.shift());
+let cidade;
 
-for(let i = 0; i < 10; i++){
-    if(lines[i] <= 0){
-        lines[i] = 1
-    }
+const cidades = {
+    61: "Brasilia",
+    71: "Salvador",
+    11: "Sao Paulo",
+    21: "Rio de Janeiro",
+    32: "Juiz de Fora",
+    19: "Campinas",
+    27: "Vitoria",
+    31: "Belo Horizonte",
+};
 
-    console.log(`X[${i}] = ${Number(lines[i])}`)
-}
+cidade = cidades[ddd] || "DDD nao cadastrado";
+console.log(cidade);
