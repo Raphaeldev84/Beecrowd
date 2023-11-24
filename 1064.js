@@ -17,20 +17,25 @@ const quebraLinhaWindows = '\r\n'
 
 let lines = conteudoArquivo.split(quebraLinhaWindows);
 
+///////////////////////COLAR NO BEECROWD O CODIGO DESTE PONTO EM DIANTE///////////////////
+//para ler linhas com mais de um valor na mesma linha use o comando a seguir
 
-let quantidade = Number(lines.shift()); 
 
-for(i = 1; i <= quantidade; i++){
+
+//para ler linhas com um unico valor na mesma linha use o comando a seguir
+let positivo = 0 
+let media = 0
+let soma = 0
+for(let i = 1; i <= 6; i++){
     let numero = Number(lines.shift());
-    if(numero < 0 && numero % 2 === 0){
-        console.log("EVEN NEGATIVE")
-    } else if(numero < 0 && numero % 2 !== 0){
-        console.log("ODD NEGATIVE")
-    } else if(numero > 0 && numero % 2 === 0){
-        console.log("EVEN POSITIVE")
-    } else if(numero > 0 && numero % 2 !== 0){
-        console.log("ODD POSITIVE")
-    } else{
-        console.log("NULL")
+
+    if(numero > 0){
+        positivo++
+        soma += numero
     }
 }
+
+media = soma / positivo 
+
+console.log(`${positivo} valores positivos`)
+console.log(media.toFixed(1))

@@ -17,20 +17,30 @@ const quebraLinhaWindows = '\r\n'
 
 let lines = conteudoArquivo.split(quebraLinhaWindows);
 
+///////////////////////COLAR NO BEECROWD O CODIGO DESTE PONTO EM DIANTE///////////////////
+//para ler linhas com mais de um valor na mesma linha use o comando a seguir
+let impar = 0
+let par = 0
+let negativo = 0
+let positivo = 0
+for(let i = 1; i <= 5; i++){
+    let numero = Number(lines.shift()); 
+    if (numero % 2 === 0){
+        par++
+    }else{
+        impar++
+    } 
 
-let quantidade = Number(lines.shift()); 
-
-for(i = 1; i <= quantidade; i++){
-    let numero = Number(lines.shift());
-    if(numero < 0 && numero % 2 === 0){
-        console.log("EVEN NEGATIVE")
-    } else if(numero < 0 && numero % 2 !== 0){
-        console.log("ODD NEGATIVE")
-    } else if(numero > 0 && numero % 2 === 0){
-        console.log("EVEN POSITIVE")
-    } else if(numero > 0 && numero % 2 !== 0){
-        console.log("ODD POSITIVE")
-    } else{
-        console.log("NULL")
+    if(numero > 0){
+        positivo++
+    } else if(numero < 0){
+        negativo++
     }
 }
+
+console.log(`${par} valor(es) par(es)`)
+console.log(`${impar} valor(es) impar(es)`)
+console.log(`${positivo} valor(es) positivo(s)`)
+console.log(`${negativo} valor(es) negativo(s)`)
+
+
