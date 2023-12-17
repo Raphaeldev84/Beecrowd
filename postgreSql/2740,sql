@@ -1,0 +1,4 @@
+(SELECT CONCAT('Podium: ', team) AS name FROM league ORDER BY POSITION LIMIT 3)
+UNION ALL
+(WITH ultimos AS (SELECT * FROM league ORDER BY POSITION DESC LIMIT 2)
+ SELECT CONCAT('Demoted: ', team) AS name FROM ultimos ORDER BY POSITION);
